@@ -105,6 +105,11 @@ if [ -e "$target" ] && [ ! -L "$target" ]; then
 fi
 symlink "$DOTFILES/nvim" "$target"
 
+# Install nvim plugins headlessly
+echo "-----> Installing Neovim plugins..."
+nvim --headless "+Lazy! sync" +qa 2>/dev/null
+echo "-----> Neovim plugins installed"
+
 # ── iTerm2 preferences ───────────────────────────────────────────────────────
 if [[ "$(uname)" =~ "Darwin" ]]; then
   if [ -f "$DOTFILES/com.googlecode.iterm2.plist" ]; then
@@ -128,8 +133,10 @@ else
 fi
 
 if ! gh auth status &> /dev/null; then
-  echo "-----> Please log in to GitHub:"
-  gh auth login
+  echo ""
+  echo "-----> GitHub CLI needs authentication. Run this when ready:"
+  echo "       gh auth login"
+  echo ""
 else
   echo "-----> Already authenticated with GitHub ($(gh api user --jq .login))"
 fi
