@@ -1,0 +1,41 @@
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+shift+v",
+    "command": "pasteAndIndent.action",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "cmd+shift+v",
+    "command": "pasteAndIndent.action",
+    "when": "editorTextFocus && !editorReadonly"
+  },
+  {
+    "key": "shift+q",
+    "command": "sqlite.runDocumentQuery",
+    "when": "editorLangId =~ /(sql|sqlite)/"
+  },
+  {
+    "key": "shift+cmd+q",
+    "command": "-sqlite.runDocumentQuery",
+    "when": "editorLangId =~ /(sql|sqlite)/"
+  },
+  {
+    "key": "cmd+i",
+    "command": "composerMode.agent"
+  },
+  {
+    "key": "cmd+l",
+    "command": "chatgpt.openSidebar"
+  },
+  {
+    "key": "cmd+l",
+    "command": "composer.closeComposerTab",
+    "when": "composerFocused && !editorTextFocus || !editorTextFocus && focusedView =~ /^workbench.panel.aichat.view/"
+  },
+  {
+    "key": "cmd+w",
+    "command": "-composer.closeComposerTab",
+    "when": "composerFocused && !editorTextFocus || !editorTextFocus && focusedView =~ /^workbench.panel.aichat.view/"
+  }
+]
