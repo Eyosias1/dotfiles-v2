@@ -81,6 +81,21 @@ if [[ "$(uname)" =~ "Darwin" ]]; then
   fi
 fi
 
+# ── GitHub CLI ───────────────────────────────────────────────────────────────
+if ! command -v gh &> /dev/null; then
+  echo "-----> Installing GitHub CLI (gh)..."
+  brew install gh
+else
+  echo "-----> GitHub CLI already installed ($(gh --version | head -1))"
+fi
+
+if ! gh auth status &> /dev/null; then
+  echo "-----> Please log in to GitHub:"
+  gh auth login
+else
+  echo "-----> Already authenticated with GitHub ($(gh api user --jq .login))"
+fi
+
 # ── zsh plugins ──────────────────────────────────────────────────────────────
 ZSH_PLUGINS_DIR="$HOME/.oh-my-zsh/custom/plugins"
 mkdir -p "$ZSH_PLUGINS_DIR"
