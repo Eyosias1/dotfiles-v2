@@ -23,34 +23,24 @@ My personal macOS development environment — clean, fast, and version-controlle
 
 ## Fresh Machine Setup
 
-### 1. Prerequisites
+Just two commands — the script handles everything else automatically.
+
+### 1. Clone this repo
 
 ```sh
-# Install Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-
-# Install Oh My Zsh
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
-# Install Powerlevel10k theme
-git clone --depth=1 https://github.com/romkatv/powerlevel10k.git \
-  ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+git clone https://github.com/Eyosias1/dotfiles-v2.git ~/.dotfiles
 ```
 
-### 2. Clone this repo
+### 2. Run the install script
 
 ```sh
-git clone https://github.com/Eyosias1/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles && zsh install.sh
 ```
 
-### 3. Run the install script
+Open a new terminal tab and you're good to go.
 
-```sh
-cd ~/.dotfiles
-zsh install.sh
-```
-
-That's it. Open a new terminal tab and you're good to go.
+> The script will automatically install anything that's missing:
+> Homebrew, Oh My Zsh, Powerlevel10k, Neovim, GitHub CLI
 
 ---
 
