@@ -46,12 +46,33 @@ Open a new terminal tab and you're good to go.
 
 ## What `install.sh` Does
 
+**Prerequisites**
+- Installs Homebrew if missing
+- Installs Oh My Zsh if missing
+- Installs Powerlevel10k if missing
+- Installs Neovim if missing
+
+**Dotfiles**
 - Symlinks `zshrc`, `zprofile`, `aliases`, `gitconfig` → `~/.<name>`
-- Symlinks `config` → `~/.ssh/config` and adds your SSH key to the keychain
 - Symlinks `settings.json` and `keybindings.json` → VS Code user folder
 - Symlinks `nvim/` → `~/.config/nvim`
-- Configures iTerm2 to load prefs from this folder
-- Installs `zsh-syntax-highlighting` and `zsh-autosuggestions` if missing
+- Installs Neovim plugins headlessly via lazy.nvim
+
+**SSH**
+- Generates an SSH key (`ed25519`) if one doesn't exist
+- Uploads the public key to GitHub automatically via `gh`
+- Adds the key to the macOS keychain
+
+**GitHub CLI**
+- Installs `gh` if missing
+- Prompts `gh auth login` if not authenticated
+
+**iTerm2**
+- Configures iTerm2 to load prefs from this folder automatically
+
+**zsh plugins**
+- Installs `zsh-syntax-highlighting` if missing
+- Installs `zsh-autosuggestions` if missing
 
 > Existing files are backed up as `<file>.backup` before being replaced.
 
