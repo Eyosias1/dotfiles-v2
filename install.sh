@@ -80,6 +80,8 @@ if [[ "$(uname)" =~ "Darwin" ]]; then
   if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
     echo "-----> Generating SSH key..."
     ssh-keygen -t ed25519 -C "$(hostname -s)" -f "$HOME/.ssh/id_ed25519"
+    echo "-----> Requesting admin:public_key scope for GitHub CLI..."
+    gh auth refresh -h github.com -s admin:public_key
     echo "-----> Adding SSH key to GitHub..."
     gh ssh-key add "$HOME/.ssh/id_ed25519.pub" --title "$(hostname -s)"
   else
