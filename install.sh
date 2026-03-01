@@ -79,13 +79,14 @@ if [[ "$(uname)" =~ "Darwin" ]]; then
   # Generate SSH key if one doesn't exist
   if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
     echo "-----> Generating SSH key..."
-    ssh-keygen -t ed25519 -C "eyosias16@gmail.com" -f "$HOME/.ssh/id_ed25519" -N ""
+    ssh-keygen -t ed25519 -C "$(hostname -s)" -f "$HOME/.ssh/id_ed25519"
     echo "-----> Adding SSH key to GitHub..."
-    gh ssh-key add "$HOME/.ssh/id_ed25519.pub" --title "My MacBook"
+    gh ssh-key add "$HOME/.ssh/id_ed25519.pub" --title "$(hostname -s)"
   else
     echo "-----> SSH key already exists"
   fi
   ssh-add --apple-use-keychain ~/.ssh/id_ed25519 2>/dev/null || true
+  gh config set git_protocol ssh
 fi
 
 # ── VS Code settings ─────────────────────────────────────────────────────────

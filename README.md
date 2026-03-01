@@ -59,9 +59,11 @@ Open a new terminal tab and you're good to go.
 - Installs Neovim plugins headlessly via lazy.nvim
 
 **SSH**
-- Generates an SSH key (`ed25519`) if one doesn't exist
-- Uploads the public key to GitHub automatically via `gh`
-- Adds the key to the macOS keychain
+- Generates an SSH key (`ed25519`) if one doesn't exist — you'll be prompted to create a passphrase
+- Labels the key with the machine's hostname (e.g. `Mac-Mini`) for easy identification in GitHub
+- Uploads the public key to GitHub automatically via `gh` using the hostname as the key title
+- Adds the key to the macOS Keychain — passphrase is only required once after reboot
+- Switches `gh` git protocol to SSH
 
 **GitHub CLI**
 - Installs `gh` if missing
